@@ -1000,7 +1000,7 @@ ALTER TABLE ONLY identities
 --
 
 ALTER TABLE ONLY blockings
-    ADD CONSTRAINT fk_rails_8b7920d779 FOREIGN KEY (blocked_id) REFERENCES users(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+    ADD CONSTRAINT fk_rails_8b7920d779 FOREIGN KEY (blocked_id) REFERENCES users(id) ON DELETE CASCADE;
 
 
 --
@@ -1025,6 +1025,14 @@ ALTER TABLE ONLY dismissals
 
 ALTER TABLE ONLY ads
     ADD CONSTRAINT fk_rails_9ce39f9139 FOREIGN KEY (user_owner) REFERENCES users(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: friendships fk_rails_d78dc9c7fd; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY friendships
+    ADD CONSTRAINT fk_rails_d78dc9c7fd FOREIGN KEY (friend_id) REFERENCES users(id) ON DELETE CASCADE;
 
 
 --
@@ -1089,6 +1097,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20161019233040'),
 ('20161117184138'),
 ('20161117184157'),
-('20161122140853');
+('20161122140853'),
+('20170818125311');
 
 
